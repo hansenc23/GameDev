@@ -350,7 +350,7 @@ MonoBehaviour:
   glowAnim: []
   clips:
   - {fileID: 8300000, guid: 184a4e2ea94930f43adbc7219b6ac0e2, type: 3}
-  - {fileID: 8300000, guid: e9ecca2bd7fdd184ca5bb6c60c7acc21, type: 3}
+  - {fileID: 8300000, guid: 2a175ed26ae82514e9c345926938db39, type: 3}
 --- !u!82 &1936948100781526538
 AudioSource:
   m_ObjectHideFlags: 0
