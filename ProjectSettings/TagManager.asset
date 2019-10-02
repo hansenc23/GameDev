@@ -7,6 +7,9 @@ TagManager:
   - O
   - LineClear
   - tetromino
+  - PlayButton
+  - PlayButton2
+  - ExitButton
   layers:
   - Default
   - TransparentFX
