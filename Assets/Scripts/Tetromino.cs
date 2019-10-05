@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tetromino : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class Tetromino : MonoBehaviour
     private static Transform[,] grid = new Transform[width, height];
     public Animator[] glowAnim;
     public AudioClip[] clips = new AudioClip[2];
-    
+    public static int linesCleared = 0;
+    public static int cleared = 0;
 
     // Start is called before the first frame update
     private void Awake()
@@ -29,7 +31,28 @@ public class Tetromino : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed/10 : fallSpeed))
+        CheckUserInput();
+
+        CheckLines();
+
+        if (this.enabled == false)
+        {
+            //Debug.Log("DONE");
+            //this.GetComponentInChildren<Animator>().enabled =
+
+            foreach (Animator children in glowAnim)
+            {
+                //children.GetComponent<Animator>().enabled = false;
+                Destroy(children.GetComponent<Animator>());
+            }
+        }
+
+
+    }
+
+    void CheckUserInput()
+    {
+        if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed))
         {
             transform.position += new Vector3(0, -1, 0);
             if (!ValidMove())
@@ -38,18 +61,18 @@ public class Tetromino : MonoBehaviour
                 updateGrid();
                 FindObjectOfType<Spawner>().Spawn();
                 this.enabled = false;
-                
+
             }
-                
+
             fall = Time.time;
         }
 
-        
+
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.position += new Vector3(-1, 0, 0);
-            if(!ValidMove())
+            if (!ValidMove())
                 transform.position -= new Vector3(-1, 0, 0);
         }
 
@@ -70,23 +93,11 @@ public class Tetromino : MonoBehaviour
                 if (!ValidMove())
                     transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
             }
-           
+
         }
-
-        if (this.enabled == false)
-        {
-            Debug.Log("DONE");
-            //this.GetComponentInChildren<Animator>().enabled =
-
-            foreach(Animator children in glowAnim)
-            {
-                //children.GetComponent<Animator>().enabled = false;
-                Destroy(children.GetComponent<Animator>());
-            }
-        }
-
-        CheckLines();
     }
+
+   
 
     bool ValidMove()
     {
@@ -132,9 +143,13 @@ public class Tetromino : MonoBehaviour
                 gameObject.GetComponent<AudioSource>().clip = clips[1];
                 gameObject.GetComponent<AudioSource>().Play();
                 DeleteLine(i);
+                
                 RowDown(i);
             }
+            
         }
+        
+
     }
 
     bool HasLine(int i)
@@ -146,6 +161,9 @@ public class Tetromino : MonoBehaviour
                 return false;
             }
         }
+        linesCleared++;
+        cleared++;
+        
         return true;
     }
 
@@ -153,10 +171,11 @@ public class Tetromino : MonoBehaviour
     {
         for(int j = 0; j < width; j++)
         {
-           
             Destroy(grid[j, i].gameObject);
             grid[j, i] = null;
         }
+        
+
     }
 
     void RowDown(int i)
