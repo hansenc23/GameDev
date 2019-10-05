@@ -29,5 +29,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(1);
         DontDestroyOnLoad(this.gameObject);
     }
-        
+
+    public void QuitGame()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
+
 }

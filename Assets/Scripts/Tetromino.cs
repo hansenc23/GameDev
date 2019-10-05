@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Tetromino : MonoBehaviour
 {
@@ -32,8 +33,10 @@ public class Tetromino : MonoBehaviour
     void Update()
     {
         CheckUserInput();
-
+        //checkIsAboveGrid();
         CheckLines();
+       
+
 
         if (this.enabled == false)
         {
@@ -48,7 +51,30 @@ public class Tetromino : MonoBehaviour
         }
 
 
+
+
     }
+
+    //bool checkIsAboveGrid()
+    //{
+    //    for(int i = 0; i < width; i++)
+    //    {
+    //        foreach(Transform children in transform)
+    //        {
+    //            int roundedX = Mathf.RoundToInt(children.transform.position.x);
+    //            int roundedY = Mathf.RoundToInt(children.transform.position.y);
+
+    //            if(roundedY > height - 1)
+    //            {
+                    
+    //                return true;
+                    
+    //            }
+    //        }
+    //    }
+
+    //    return false;
+    //}
 
     void CheckUserInput()
     {
@@ -60,7 +86,9 @@ public class Tetromino : MonoBehaviour
                 transform.position -= new Vector3(0, -1, 0);
                 updateGrid();
                 FindObjectOfType<Spawner>().Spawn();
+                
                 this.enabled = false;
+             
 
             }
 
@@ -122,14 +150,22 @@ public class Tetromino : MonoBehaviour
 
     void updateGrid()
     {
-        foreach (Transform children in transform)
+        try
         {
-            int roundedX = Mathf.RoundToInt(children.transform.position.x);
-            int roundedY = Mathf.RoundToInt(children.transform.position.y);
+            foreach (Transform children in transform)
+            {
+                int roundedX = Mathf.RoundToInt(children.transform.position.x);
+                int roundedY = Mathf.RoundToInt(children.transform.position.y);
 
-            grid[roundedX, roundedY] = children;         
+                grid[roundedX, roundedY] = children;
+            }
         }
-
+        catch
+        {
+            SceneManager.LoadScene(2);
+        }
+        
+         
         
     }
 
@@ -143,13 +179,12 @@ public class Tetromino : MonoBehaviour
                 gameObject.GetComponent<AudioSource>().clip = clips[1];
                 gameObject.GetComponent<AudioSource>().Play();
                 DeleteLine(i);
-                
                 RowDown(i);
             }
             
         }
         
-
+         
     }
 
     bool HasLine(int i)
