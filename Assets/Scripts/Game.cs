@@ -27,6 +27,7 @@ public class Game : MonoBehaviour
         UpdateScore();
         updateScoreUI();
         numOfLines.text = Tetromino.cleared.ToString();
+        
     }
 
 

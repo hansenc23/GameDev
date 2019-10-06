@@ -8,7 +8,7 @@ public class Tetromino : MonoBehaviour
 {
     public Vector3 rotationPoint;
     float fall = 0;
-    public float fallSpeed = 1;
+    public float fallSpeed = 1.0f;
     public static int height = 20;
     public static int width = 10;
     private static Transform[,] grid = new Transform[width, height];
@@ -35,22 +35,10 @@ public class Tetromino : MonoBehaviour
         CheckUserInput();
         //checkIsAboveGrid();
         CheckLines();
-       
 
 
-        if (this.enabled == false)
-        {
-            //Debug.Log("DONE");
-            //this.GetComponentInChildren<Animator>().enabled =
-
-            foreach (Animator children in glowAnim)
-            {
-                //children.GetComponent<Animator>().enabled = false;
-                Destroy(children.GetComponent<Animator>());
-            }
-        }
-
-
+        disableAnimation();
+      
 
 
     }
@@ -76,27 +64,63 @@ public class Tetromino : MonoBehaviour
     //    return false;
     //}
 
+    void disableAnimation()
+    {
+        if (this.enabled == false)
+        {
+           
+            foreach (Animator children in glowAnim)
+            {
+                
+                Destroy(children.GetComponent<Animator>());
+            }
+        }
+    }
+
     void CheckUserInput()
     {
-        if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed))
+      
+        if(cleared > 8)
         {
-            transform.position += new Vector3(0, -1, 0);
-            if (!ValidMove())
+            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed - 0.6))
             {
-                transform.position -= new Vector3(0, -1, 0);
-                updateGrid();
-                FindObjectOfType<Spawner>().Spawn();
-                
-                this.enabled = false;
-             
+                transform.position += new Vector3(0, -1, 0);
+                if (!ValidMove())
+                {
+                    transform.position -= new Vector3(0, -1, 0);
+                    updateGrid();
+                    FindObjectOfType<Spawner>().Spawn();
 
+                    this.enabled = false;
+
+
+                }
+
+                fall = Time.time;
             }
-
-            fall = Time.time;
         }
+        else
+        {
+            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed))
+            {
+                transform.position += new Vector3(0, -1, 0);
+                if (!ValidMove())
+                {
+                    transform.position -= new Vector3(0, -1, 0);
+                    updateGrid();
+                    FindObjectOfType<Spawner>().Spawn();
+
+                    this.enabled = false;
 
 
+                }
 
+                fall = Time.time;
+            }
+        }
+        
+        
+  
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.position += new Vector3(-1, 0, 0);
