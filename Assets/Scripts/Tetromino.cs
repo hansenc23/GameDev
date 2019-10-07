@@ -16,6 +16,7 @@ public class Tetromino : MonoBehaviour
     public AudioClip[] clips = new AudioClip[2];
     public static int linesCleared = 0;
     public static int cleared = 0;
+    
 
     // Start is called before the first frame update
     private void Awake()
@@ -38,6 +39,7 @@ public class Tetromino : MonoBehaviour
 
 
         disableAnimation();
+        clearGrid();
       
 
 
@@ -80,9 +82,47 @@ public class Tetromino : MonoBehaviour
     void CheckUserInput()
     {
       
-        if(cleared > 8)
+        if(Game.level == 1)
+        {
+            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed - 0.4))
+            {
+                transform.position += new Vector3(0, -1, 0);
+                if (!ValidMove())
+                {
+                    transform.position -= new Vector3(0, -1, 0);
+                    updateGrid();
+                    FindObjectOfType<Spawner>().Spawn();
+
+                    this.enabled = false;
+
+
+                }
+
+                fall = Time.time;
+            }
+        }
+        else if(Game.level == 2)
         {
             if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed - 0.6))
+            {
+                transform.position += new Vector3(0, -1, 0);
+                if (!ValidMove())
+                {
+                    transform.position -= new Vector3(0, -1, 0);
+                    updateGrid();
+                    FindObjectOfType<Spawner>().Spawn();
+
+                    this.enabled = false;
+
+
+                }
+
+                fall = Time.time;
+            }
+        }
+        else if(Game.level == 3)
+        {
+            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed - 0.8))
             {
                 transform.position += new Vector3(0, -1, 0);
                 if (!ValidMove())
@@ -235,6 +275,23 @@ public class Tetromino : MonoBehaviour
         }
         
 
+    }
+
+    void clearGrid()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (grid[j, i] != null)
+                    {
+                        Destroy(grid[j, i].gameObject);
+                    }
+                }
+            }
+        }
     }
 
     void RowDown(int i)

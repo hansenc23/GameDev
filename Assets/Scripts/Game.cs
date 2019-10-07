@@ -12,8 +12,11 @@ public class Game : MonoBehaviour
     public int scoreTwoLine = 100;
     public int scoreThreeLine = 300;
     public int scoreFourLine = 1200;
+    public static int level = 0;
     public Text score;
     public Text numOfLines;
+    public Text levelText;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +30,15 @@ public class Game : MonoBehaviour
         UpdateScore();
         updateScoreUI();
         numOfLines.text = Tetromino.cleared.ToString();
+        updateLevel();
+        levelText.text = level.ToString();
         
+        
+    }
+
+    public void updateLevel()
+    {
+        level = Tetromino.cleared / 10;
     }
 
 
