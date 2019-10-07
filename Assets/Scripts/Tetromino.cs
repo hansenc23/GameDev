@@ -11,12 +11,12 @@ public class Tetromino : MonoBehaviour
     public float fallSpeed = 1.0f;
     public static int height = 20;
     public static int width = 10;
-    private static Transform[,] grid = new Transform[width, height];
+    public static Transform[,] grid = new Transform[width, height];
     public Animator[] glowAnim;
     public AudioClip[] clips = new AudioClip[2];
     public static int linesCleared = 0;
     public static int cleared = 0;
-    
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -33,14 +33,18 @@ public class Tetromino : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckUserInput();
-        //checkIsAboveGrid();
-        CheckLines();
+        if (!Game.isPaused)
+        {
+
+            CheckUserInput();
+            //checkIsAboveGrid();
+            CheckLines();
+
+             
+            disableAnimation();
+        }
 
 
-        disableAnimation();
-        clearGrid();
-      
 
 
     }
@@ -189,7 +193,23 @@ public class Tetromino : MonoBehaviour
         }
     }
 
-   
+    public void clearGrid()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    if (grid[j, i] != null)
+                    {
+                        Destroy(grid[j, i].gameObject);
+                    }
+                }
+            }
+        }
+    }
+
 
     bool ValidMove()
     {
@@ -277,22 +297,7 @@ public class Tetromino : MonoBehaviour
 
     }
 
-    void clearGrid()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            for (int i = 0; i < height; i++)
-            {
-                for (int j = 0; j < width; j++)
-                {
-                    if (grid[j, i] != null)
-                    {
-                        Destroy(grid[j, i].gameObject);
-                    }
-                }
-            }
-        }
-    }
+    
 
     void RowDown(int i)
     {

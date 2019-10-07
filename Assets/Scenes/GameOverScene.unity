@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!224 &39809578 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4994879353753115105, guid: 203053d1d6fe7e2408cc8ca412201356,
+    type: 3}
+  m_PrefabInstance: {fileID: 236710111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &70598342
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,16 +248,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExitButton
       objectReference: {fileID: 0}
-    - target: {fileID: 7457347064033197526, guid: 203053d1d6fe7e2408cc8ca412201356,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 219400951}
-    - target: {fileID: 7457347064033197526, guid: 203053d1d6fe7e2408cc8ca412201356,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitGame
-      objectReference: {fileID: 0}
     - target: {fileID: 7457347064033197530, guid: 203053d1d6fe7e2408cc8ca412201356,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -368,6 +364,16 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7457347064033197526, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 219400951}
+    - target: {fileID: 7457347064033197526, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
     - target: {fileID: 7457347062526476313, guid: 203053d1d6fe7e2408cc8ca412201356,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -388,6 +394,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 219400951}
+    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 203053d1d6fe7e2408cc8ca412201356, type: 3}
@@ -549,8 +565,8 @@ RectTransform:
   m_Children:
   - {fileID: 70598343}
   - {fileID: 1846963279}
-  - {fileID: 1471446286}
-  - {fileID: 1205769670}
+  - {fileID: 39809578}
+  - {fileID: 1390933113}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -559,12 +575,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!224 &1205769670 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7457347064033197530, guid: 203053d1d6fe7e2408cc8ca412201356,
-    type: 3}
-  m_PrefabInstance: {fileID: 1390933112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1390933112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -576,16 +586,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 7457347064033197526, guid: 203053d1d6fe7e2408cc8ca412201356,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 219400951}
-    - target: {fileID: 7457347064033197526, guid: 203053d1d6fe7e2408cc8ca412201356,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BackToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 7457347064033197530, guid: 203053d1d6fe7e2408cc8ca412201356,
         type: 3}
@@ -703,6 +703,16 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7457347064033197526, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 219400951}
+    - target: {fileID: 7457347064033197526, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 7457347062526476313, guid: 203053d1d6fe7e2408cc8ca412201356,
         type: 3}
       propertyPath: m_Text
@@ -729,13 +739,49 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8203252689500611610, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_Name
+      value: MenuButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994879353753115105, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994879353753115105, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 813687523531618938, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9f791752d64e344a8d3cdeef8d80655,
+        type: 3}
+    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 219400951}
+    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017051905956734393, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_Text
+      value: Main Menu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 203053d1d6fe7e2408cc8ca412201356, type: 3}
---- !u!224 &1471446286 stripped
+--- !u!224 &1390933113 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7457347064033197530, guid: 203053d1d6fe7e2408cc8ca412201356,
+  m_CorrespondingSourceObject: {fileID: 4994879353753115105, guid: 203053d1d6fe7e2408cc8ca412201356,
     type: 3}
-  m_PrefabInstance: {fileID: 236710111}
+  m_PrefabInstance: {fileID: 1390933112}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1846963278
 GameObject:

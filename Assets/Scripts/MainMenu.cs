@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void audio()
+    public void Audio()
     {
         gameObject.GetComponent<AudioSource>().Play();
     }
@@ -27,7 +27,8 @@ public class MainMenu : MonoBehaviour
     public void loadGame()
     {
         SceneManager.LoadScene(1);
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
+        
     }
 
     public void QuitGame()
@@ -37,7 +38,19 @@ public class MainMenu : MonoBehaviour
 
     public void BackToMenu()
     {
+        
         SceneManager.LoadScene(0);
+        Game.isPaused = false;
+
+
+
     }
 
+    public void BackToMenu1()
+    {
+        SceneManager.LoadScene(0);
+        
+    }
+
+    
 }

@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
     public GameObject[] Tetrominoes;
     private GameObject nextTetromino;
     private GameObject previewTetromino;
-    private Vector2 previewPosition = new Vector2(18.0f, 14.0f);
+    private Vector2 previewPosition = new Vector2(18.0f, 12.0f);
  
     private bool gameStarted;
    

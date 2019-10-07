@@ -16,12 +16,22 @@ public class Game : MonoBehaviour
     public Text score;
     public Text numOfLines;
     public Text levelText;
+    public static bool isPaused = false;
+    private AudioSource gameMusic;
+    public Canvas stats_canvas;
+    public Canvas pause_canvas;
+    //public Canvas item_canvas;
+    public Button pauseButton;
+    public Button resumeButton;
+    public static bool isItemUsed = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 1;
+        gameMusic = gameObject.GetComponent<AudioSource>();
+        gameMusic.Play();
     }
 
     // Update is called once per frame
@@ -32,10 +42,118 @@ public class Game : MonoBehaviour
         numOfLines.text = Tetromino.cleared.ToString();
         updateLevel();
         levelText.text = level.ToString();
-        
-        
+        //CheckGamePaused();
+        pauseButton.onClick.AddListener(PauseGame);
+        resumeButton.onClick.AddListener(ResumeGame);
+        //if (getItem() == true)
+        //{
+        //    item_canvas.enabled = true;
+            
+        //    if(isItemUsed == true)
+        //    {
+        //        disableItem();
+        //    }
+
+        //}
+        //checkInput();
+
+     
+       
     }
 
+    //void CheckGamePaused()
+    //{
+    //    if (Input.GetKeyUp(KeyCode.P))
+    //    {
+    //        if (Time.timeScale == 1)
+    //            PauseGame();
+    //        else
+    //            ResumeGame();
+    //    }
+    //}
+
+    //bool getItem()
+    //{
+    //    if(Tetromino.cleared >= 1)
+    //    {
+            
+    //        return true;
+    //    }
+
+    //    return false;
+    //}
+
+    //void disableItem()
+    //{
+    //    item_canvas.enabled = false;
+
+    //}
+
+
+
+    //void useGridSweeper()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Q))
+    //    {
+    //        isItemUsed = true;
+    //        for (int i = 0; i < Tetromino.height; i++)
+    //        {
+    //            for (int j = 0; j < Tetromino.width; j++)
+    //            {
+    //                if (Tetromino.grid[j, i] != null)
+    //                {
+    //                    Destroy(Tetromino.grid[j, i].gameObject);
+    //                }
+    //            }
+    //        }
+
+    //        item_canvas.enabled = false;
+    //    }
+      
+
+    //}
+
+    //void checkIsItemUsed()
+    //{
+    //    if (Input.GetKeyUp(KeyCode.Q))
+    //    {
+    //        if(item_canvas.enabled == false)
+    //        {
+    //            item_canvas.enabled = true;
+    //        }
+    //        else
+    //        {
+    //            item_canvas.enabled = false;
+    //        }
+    //    }
+        
+    //}
+
+    //void showItem()
+    //{
+    //    item_canvas.enabled = true;
+    //}
+
+    //void removeItem()
+    //{
+    //    item_canvas.enabled = false;
+    //}
+
+    void ResumeGame()
+    {
+        Time.timeScale = 1;
+        gameMusic.Play();
+        pause_canvas.enabled = false;
+        isPaused = false;
+    }
+
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+        gameMusic.Pause();
+        pause_canvas.enabled = true;
+        isPaused = true;
+    }
     public void updateLevel()
     {
         level = Tetromino.cleared / 10;

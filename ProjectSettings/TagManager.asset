@@ -10,6 +10,8 @@ TagManager:
   - PlayButton
   - PlayButton2
   - ExitButton
+  - Item
+  - ItemCanvas
   layers:
   - Default
   - TransparentFX
