@@ -5,13 +5,12 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
 
-    public Canvas item_canvas;
+    //public Canvas item_canvas;
     public Canvas[] items_canvas;
     public AudioClip[] clips;
     
     private bool itemUsed = false;
-    //public GameObject canvas;
-    //public GameObject enemyCar;
+
     bool useItemSweeper = false;
     bool useItemPoints = false;
 
@@ -28,12 +27,7 @@ public class Item : MonoBehaviour
     {
         if (Tetromino.cleared >= 5)
         {
-            //useGridSweeper();
-            //if (useItem == true)
-            //{
-            //    disableGridSweeper();
 
-            //}
             items_canvas[0].enabled = true;
 
             if (items_canvas[0].enabled == true)
@@ -63,81 +57,26 @@ public class Item : MonoBehaviour
           
         }
 
-
-
-        //if (Tetromino.cleared >= 10)
-        //{
-        //    useBonusPoints();
-        //    if (useBonus == true)
-        //    {
-        //        disableBonusPoints();
-
-
-        //    }
-
-
-        //}
-
-
-
-        //if (Tetromino.cleared > 0 && isEven() == true)
-        //{
-        //    item_canvas.enabled = true;
-        //    useGridSweeper();
-        //    checkIsItemUsed();
-
-        //}
-
-        //if(Tetromino.cleared == 3)
-        //{
-        //    if (gameObject.GetComponent<Item>().enabled == false)
-        //        Debug.Log("SCRIPT FALSE");
-        //        gameObject.GetComponent<Item>().enabled = true;
-
-        //    //gameObject.GetComponent<Item>().enabled = true;
-        //}
-
-        //if (gameObject.GetComponent<Item>().enabled == false)
-        //{
-        //    gameObject.GetComponent<Item>().enabled = true;
-        //}
-
-        //else
-        //{
-        //    gameObject.GetComponent<Item>().enabled = false;
-        //}
-
-        //if(item_canvas.enabled == true)
-        //{
-        //    useGridSweeper();
-        //}
-
-        //if(itemUsed == true)
-        //{
-        //    item_canvas.enabled = false;
-        //    gameObject.GetComponent<Item>().enabled = false;
-
-        //}
-        addLevel();
+        
     }
 
-    void addLevel()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Tetromino.cleared += 1;
-        }
-    }
+    //void addLevel()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        Tetromino.cleared += 1;
+    //    }
+    //}
 
-    bool isEven()
-    {
-        if(Tetromino.cleared % 2 == 0)
-        {
-            return true;
-        }
+    //bool isEven()
+    //{
+    //    if(Tetromino.cleared % 2 == 0)
+    //    {
+    //        return true;
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 
     public void useGridSweeper()
     {
@@ -148,7 +87,7 @@ public class Item : MonoBehaviour
             gameObject.GetComponent<AudioSource>().clip = clips[0];
             gameObject.GetComponent<AudioSource>().Play();
 
-
+            //clear all the tetromino that are on the grid
             for (int i = 0; i < Tetromino.height; i++)
             {
                 for (int j = 0; j < Tetromino.width; j++)
@@ -165,16 +104,9 @@ public class Item : MonoBehaviour
 
     }
 
-    public void disableGridSweeper()
-    {
-        items_canvas[0].enabled = false;
-        
-        //gameObject.GetComponent<Item>().enabled = false;
-    }
-
     public void useBonusPoints()
     {
-        
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             useItemPoints = true;
@@ -183,6 +115,16 @@ public class Item : MonoBehaviour
             Game.totalScore += 10000;
         }
     }
+
+
+    public void disableGridSweeper()
+    {
+        items_canvas[0].enabled = false;
+        
+        //gameObject.GetComponent<Item>().enabled = false;
+    }
+
+    
      
     public void disableBonusPoints()
     {
@@ -191,32 +133,5 @@ public class Item : MonoBehaviour
        // gameObject.GetComponent<Item>().enabled = false;
     }
 
-    //void CreateEnemy()
-    //{
-    //    GameObject newCanvas = Instantiate(canvas) as GameObject;
-    //    GameObject createImage = Instantiate(enemyCar) as GameObject;
-    //    createImage.transform.SetParent(newCanvas.transform, false);
-    //}
-
-    void checkIsItemUsed()
-    {
-       if(itemUsed == true)
-        {
-            item_canvas.enabled = false;
-            gameObject.GetComponent<Item>().enabled = false;
-        }
-        
-
-    }
-
-    void showItem()
-    {
-        item_canvas.enabled = true;
-    }
-
-    void removeItem()
-    {
-        item_canvas.enabled = false;
-    }
-
+  
 }

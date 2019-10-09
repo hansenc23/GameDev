@@ -139,6 +139,7 @@ public class Game : MonoBehaviour
     //    item_canvas.enabled = false;
     //}
 
+    //resume the game
     void ResumeGame()
     {
         Time.timeScale = 1;
@@ -147,6 +148,7 @@ public class Game : MonoBehaviour
         isPaused = false;
     }
 
+    //pause the game
     void PauseGame()
     {
         Time.timeScale = 0;
@@ -165,8 +167,10 @@ public class Game : MonoBehaviour
         score.text = totalScore.ToString();
     }
 
+
     public void UpdateScore()
     {
+        //check number of lines cleared at once
         if (Tetromino.linesCleared > 0)
         {
             if (Tetromino.linesCleared == 1)
@@ -190,21 +194,26 @@ public class Game : MonoBehaviour
         }
     }
 
+
+    //score for 1 line cleared
     void ClearOne()
     {
         totalScore += scoreOneLine;
     }
 
+    //score for 2 lines cleared at once
     void ClearTwo()
     {
         totalScore += scoreTwoLine;
     }
 
+    //score for 3 lines cleared at once
     void ClearThree()
     {
         totalScore += scoreThreeLine;
     }
 
+    //score for 4 lines cleared at once
     void ClearFour()
     {
         totalScore += scoreFourLine;

@@ -83,9 +83,10 @@ public class Tetromino : MonoBehaviour
         }
     }
 
+    //check user input
     void CheckUserInput()
     {
-      
+        //check game level, as level increase tetromino will fall faster
         if(Game.level == 1)
         {
             if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed - 0.3))
@@ -164,13 +165,15 @@ public class Tetromino : MonoBehaviour
         }
         else
         {
-            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed))
+            //make the tetromino fall by checking it against Time.time
+            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed)) //e.g if Time.time = 1, fall = 0 >= fallspeed = 1 results to true, then tetromino will move down 1 unit.
             {
                 transform.position += new Vector3(0, -1, 0);
+                
                 if (!ValidMove())
                 {
                     transform.position -= new Vector3(0, -1, 0);
-                    updateGrid();
+                    updateGrid(); //add to tetromino to 2d array when it has landed
                     FindObjectOfType<Spawner>().Spawn();
 
                     this.enabled = false;
@@ -187,15 +190,15 @@ public class Tetromino : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.position += new Vector3(-1, 0, 0);
-            if (!ValidMove())
-                transform.position -= new Vector3(-1, 0, 0);
+            if (!ValidMove()) //check if inside grid
+                transform.position -= new Vector3(-1, 0, 0); //reverse the movement
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             transform.position += new Vector3(1, 0, 0);
-            if (!ValidMove())
-                transform.position -= new Vector3(1, 0, 0);
+            if (!ValidMove()) //check if inside grid
+                transform.position -= new Vector3(1, 0, 0); //reverse the movement
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -205,44 +208,30 @@ public class Tetromino : MonoBehaviour
                 transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
                 gameObject.GetComponent<AudioSource>().clip = clips[0];
                 gameObject.GetComponent<AudioSource>().Play();
-                if (!ValidMove())
-                    transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
+                if (!ValidMove()) //check if inside grid
+                    transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90); //reverse the movement
             }
 
         }
     }
 
-    public void clearGrid()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            for (int i = 0; i < height; i++)
-            {
-                for (int j = 0; j < width; j++)
-                {
-                    if (grid[j, i] != null)
-                    {
-                        Destroy(grid[j, i].gameObject);
-                    }
-                }
-            }
-        }
-    }
+  
 
-
+    //check if tetromino is inside the grid
     bool ValidMove()
     {
+        //iterate through all the children
         foreach(Transform children in transform)
         {
-            int roundedX = Mathf.RoundToInt(children.transform.position.x);
-            int roundedY = Mathf.RoundToInt(children.transform.position.y);
+            int roundedX = Mathf.RoundToInt(children.transform.position.x); //get rounded x position
+            int roundedY = Mathf.RoundToInt(children.transform.position.y); //get rounded y position
 
-            if(roundedX < 0 || roundedX >= width || roundedY < 0 || roundedY >= height)
+            if(roundedX < 0 || roundedX >= width || roundedY < 0 || roundedY >= height) //check if position of children is inside the grid
             {
-                return false;
+                return false; 
             }
 
-            if(grid[roundedX, roundedY] != null)
+            if(grid[roundedX, roundedY] != null) //check if grid coordinate contains a mino
             {
                 return false;
             }
@@ -251,16 +240,18 @@ public class Tetromino : MonoBehaviour
         return true;
     }
 
+    //add landed tetromino to 2d array(grid)
     void updateGrid()
     {
         try
         {
+            //iterate through all the children
             foreach (Transform children in transform)
             {
-                int roundedX = Mathf.RoundToInt(children.transform.position.x);
-                int roundedY = Mathf.RoundToInt(children.transform.position.y);
+                int roundedX = Mathf.RoundToInt(children.transform.position.x); //get rounded x position
+                int roundedY = Mathf.RoundToInt(children.transform.position.y); //get rounded y position
 
-                grid[roundedX, roundedY] = children;
+                grid[roundedX, roundedY] = children; //add to 2d array
             }
         }
         catch
@@ -272,6 +263,7 @@ public class Tetromino : MonoBehaviour
         
     }
 
+    //check if there is line
     void CheckLines()
     {
        
