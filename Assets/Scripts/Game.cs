@@ -7,7 +7,7 @@ public class Game : MonoBehaviour
 {
     
  
-    public int totalScore = 0;
+    public static int totalScore = 0;
     public int scoreOneLine = 40;
     public int scoreTwoLine = 100;
     public int scoreThreeLine = 300;

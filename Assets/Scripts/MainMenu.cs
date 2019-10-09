@@ -26,9 +26,12 @@ public class MainMenu : MonoBehaviour
 
     public void loadGame()
     {
+   
         SceneManager.LoadScene(1);
+        Tetromino.cleared = 0;
+        Game.totalScore = 0;
         //DontDestroyOnLoad(this.gameObject);
-        
+
     }
 
     public void QuitGame()
@@ -41,15 +44,17 @@ public class MainMenu : MonoBehaviour
         
         SceneManager.LoadScene(0);
         Game.isPaused = false;
-
+        
 
 
     }
 
-    public void BackToMenu1()
+    public void LoadDesignLevel()
     {
-        SceneManager.LoadScene(0);
-        
+        SceneManager.LoadScene(2);
+        Tetromino.cleared = 0;
+        Game.totalScore = 0;
+
     }
 
     

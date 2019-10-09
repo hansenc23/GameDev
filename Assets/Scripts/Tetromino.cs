@@ -88,7 +88,7 @@ public class Tetromino : MonoBehaviour
       
         if(Game.level == 1)
         {
-            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed - 0.4))
+            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed - 0.3))
             {
                 transform.position += new Vector3(0, -1, 0);
                 if (!ValidMove())
@@ -107,7 +107,7 @@ public class Tetromino : MonoBehaviour
         }
         else if(Game.level == 2)
         {
-            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed - 0.6))
+            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed - 0.5))
             {
                 transform.position += new Vector3(0, -1, 0);
                 if (!ValidMove())
@@ -126,7 +126,26 @@ public class Tetromino : MonoBehaviour
         }
         else if(Game.level == 3)
         {
-            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed - 0.8))
+            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed - 0.7))
+            {
+                transform.position += new Vector3(0, -1, 0);
+                if (!ValidMove())
+                {
+                    transform.position -= new Vector3(0, -1, 0);
+                    updateGrid();
+                    FindObjectOfType<Spawner>().Spawn();
+
+                    this.enabled = false;
+
+
+                }
+
+                fall = Time.time;
+            }
+        }
+        else if (Game.level == 4)
+        {
+            if (Time.time - fall >= (Input.GetKey(KeyCode.DownArrow) ? fallSpeed / 10 : fallSpeed - 0.85))
             {
                 transform.position += new Vector3(0, -1, 0);
                 if (!ValidMove())
@@ -246,7 +265,7 @@ public class Tetromino : MonoBehaviour
         }
         catch
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(3);
         }
         
          

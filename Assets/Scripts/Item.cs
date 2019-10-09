@@ -6,45 +6,149 @@ public class Item : MonoBehaviour
 {
 
     public Canvas item_canvas;
+    public Canvas[] items_canvas;
+    public AudioClip[] clips;
+    
     private bool itemUsed = false;
     //public GameObject canvas;
     //public GameObject enemyCar;
-    bool called = false;
+    bool useItemSweeper = false;
+    bool useItemPoints = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
-       
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Tetromino.cleared >= 1)
+        if (Tetromino.cleared >= 5)
         {
-            
-            item_canvas.enabled = true;
-            
-            useGridSweeper();
+            //useGridSweeper();
+            //if (useItem == true)
+            //{
+            //    disableGridSweeper();
+
+            //}
+            items_canvas[0].enabled = true;
+
+            if (items_canvas[0].enabled == true)
+            {
+                useGridSweeper();
+                if (useItemSweeper == true)
+                {
+                    items_canvas[0].enabled = false;
+                }
+
+            }
         }
 
-        if(itemUsed == true)
+        if (Tetromino.cleared >= 10)
         {
-            item_canvas.enabled = false;
-            gameObject.GetComponent<Item>().enabled = false;
+            
+            items_canvas[1].enabled = true;
+            if(items_canvas[1].enabled == true)
+            {
+                useBonusPoints();
+                if (useItemPoints == true)
+                {
+                    items_canvas[1].enabled = false;
+                }
+            }
 
+          
+        }
+
+
+
+        //if (Tetromino.cleared >= 10)
+        //{
+        //    useBonusPoints();
+        //    if (useBonus == true)
+        //    {
+        //        disableBonusPoints();
+
+
+        //    }
+
+
+        //}
+
+
+
+        //if (Tetromino.cleared > 0 && isEven() == true)
+        //{
+        //    item_canvas.enabled = true;
+        //    useGridSweeper();
+        //    checkIsItemUsed();
+
+        //}
+
+        //if(Tetromino.cleared == 3)
+        //{
+        //    if (gameObject.GetComponent<Item>().enabled == false)
+        //        Debug.Log("SCRIPT FALSE");
+        //        gameObject.GetComponent<Item>().enabled = true;
+
+        //    //gameObject.GetComponent<Item>().enabled = true;
+        //}
+
+        //if (gameObject.GetComponent<Item>().enabled == false)
+        //{
+        //    gameObject.GetComponent<Item>().enabled = true;
+        //}
+
+        //else
+        //{
+        //    gameObject.GetComponent<Item>().enabled = false;
+        //}
+
+        //if(item_canvas.enabled == true)
+        //{
+        //    useGridSweeper();
+        //}
+
+        //if(itemUsed == true)
+        //{
+        //    item_canvas.enabled = false;
+        //    gameObject.GetComponent<Item>().enabled = false;
+
+        //}
+        addLevel();
+    }
+
+    void addLevel()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Tetromino.cleared += 1;
         }
     }
 
-
-    void useGridSweeper()
+    bool isEven()
     {
+        if(Tetromino.cleared % 2 == 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void useGridSweeper()
+    {
+        
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            itemUsed = true;
-           
+            useItemSweeper = true;
+            gameObject.GetComponent<AudioSource>().clip = clips[0];
+            gameObject.GetComponent<AudioSource>().Play();
+
+
             for (int i = 0; i < Tetromino.height; i++)
             {
                 for (int j = 0; j < Tetromino.width; j++)
@@ -59,7 +163,32 @@ public class Item : MonoBehaviour
             
         }
 
+    }
 
+    public void disableGridSweeper()
+    {
+        items_canvas[0].enabled = false;
+        
+        //gameObject.GetComponent<Item>().enabled = false;
+    }
+
+    public void useBonusPoints()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            useItemPoints = true;
+            gameObject.GetComponent<AudioSource>().clip = clips[1];
+            gameObject.GetComponent<AudioSource>().Play();
+            Game.totalScore += 10000;
+        }
+    }
+     
+    public void disableBonusPoints()
+    {
+        items_canvas[1].enabled = false;
+        useItemPoints = false;
+       // gameObject.GetComponent<Item>().enabled = false;
     }
 
     //void CreateEnemy()
@@ -71,17 +200,12 @@ public class Item : MonoBehaviour
 
     void checkIsItemUsed()
     {
-        if (Input.GetKeyUp(KeyCode.Q))
+       if(itemUsed == true)
         {
-            if (item_canvas.enabled == false)
-            {
-                item_canvas.enabled = true;
-            }
-            else
-            {
-                item_canvas.enabled = false;
-            }
+            item_canvas.enabled = false;
+            gameObject.GetComponent<Item>().enabled = false;
         }
+        
 
     }
 

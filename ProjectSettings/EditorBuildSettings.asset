@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TetrisScene.unity
     guid: 9c88952347547bd468221da924a0826d
   - enabled: 1
+    path: Assets/Scenes/DesignLevelScene.unity
+    guid: 405ac7ab602889a42aa005e1cc6af1c8
+  - enabled: 1
     path: Assets/Scenes/GameOverScene.unity
     guid: fd646fcb3d8184d47aa86f3eddf10dab
   m_configObjects: {}

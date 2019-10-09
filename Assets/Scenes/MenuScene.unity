@@ -1133,7 +1133,29 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1767205864}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 589269482}
+        m_MethodName: LoadDesignLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 589269482}
+        m_MethodName: Audio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &2086749902
@@ -1324,7 +1346,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 589269482}
-        m_MethodName: audio
+        m_MethodName: Audio
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1380,6 +1402,61 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 151293208}
     m_Modifications:
+    - target: {fileID: 4994879353753115105, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994879353753115105, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4994879353753115105, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 589269482}
+    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 589269482}
+    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7457347064033197527, guid: 203053d1d6fe7e2408cc8ca412201356,
         type: 3}
       propertyPath: m_Name
@@ -1531,31 +1608,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_FontStyle
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4994879353753115105, guid: 203053d1d6fe7e2408cc8ca412201356,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4994879353753115105, guid: 203053d1d6fe7e2408cc8ca412201356,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4994879353753115105, guid: 203053d1d6fe7e2408cc8ca412201356,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 589269482}
-    - target: {fileID: 3390443759439691044, guid: 203053d1d6fe7e2408cc8ca412201356,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitGame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 203053d1d6fe7e2408cc8ca412201356, type: 3}
